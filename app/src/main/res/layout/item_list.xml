@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_margin="1dp"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/image_list_car"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:contentDescription="car img" />
+
+    <TextView
+        android:id="@+id/tvlist_car_make"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:textSize="10sp"
+        tools:text="car make" />
+
+    <TextView
+        android:id="@+id/tvlist_car_model"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:textSize="10sp"
+        tools:text="car model" />
+
+    <TextView
+        android:id="@+id/tvlist_car_year"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:gravity="center"
+        android:textSize="10sp"
+        tools:text="year" />
+
+    <TextView
+        android:id="@+id/tvlist_car_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="10sp"
+        tools:text="price" />
+
+    <TextView
+        android:id="@+id/tvlist_car_country"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="10sp"
+        tools:text="country" />
+
+
+</LinearLayout>
