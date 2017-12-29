@@ -9,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.devtolife.carforyourraccoon.R;
-import com.devtolife.carforyourraccoon.cardata.CarItemModel;
-import com.devtolife.carforyourraccoon.cardata.CarItemsList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,12 +26,11 @@ public class ListCarActivity extends AppCompatActivity {
 
     private RecyclerView appRecyclerView;
     RecViewAdapter appAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+
     Context context;
 
     private List<CarItemModel> carsList;
-    private CarItemModel myCarModel;
-    CarItemsList carItemsList;
+//    private CarItemModel myCarModel;
     public static String LOG_TAG = "my_log";
 
 
@@ -42,15 +39,17 @@ public class ListCarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
 
-        new ParseTask().execute();
 
 
         appRecyclerView = (RecyclerView) findViewById(R.id.my_rec_view);
+        appRecyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
         appRecyclerView.setLayoutManager(layoutManager);
         appRecyclerView.getRecycledViewPool().clear();
+
+        new ParseTask().execute();
 
         appAdapter = new RecViewAdapter(this, carsList);
         appRecyclerView.setAdapter(appAdapter);
@@ -103,27 +102,28 @@ public class ListCarActivity extends AppCompatActivity {
                 dataJsonObj = new JSONObject(strJson);
                 JSONArray cars = dataJsonObj.getJSONArray("cars");
                 carsList = new ArrayList<>();
+                JSONObject car;
 
                 for (int i = 0; i < cars.length(); i++) {
-                    JSONObject car = cars.getJSONObject(i);
+                    car = cars.getJSONObject(i);
 
 
-                    myCarModel = new CarItemModel(
-
-                            car.getInt("id"),
-                            car.getString("img"),
-                            car.getString("car_make"),
-                            car.getString("car_model"),
-                            car.getInt("car_model_year"),
-                            car.getString("price"),
-                            car.getString("country"),
-                            car.getString("city"),
-                            car.getString("first_name") + " " +
-                                    car.getString("last_name"),
-                            car.getString("phone"),
-                            car.getString("url")
+                    carsList.add(
+                            new CarItemModel(
+                                    car.getInt("id"),
+                                    car.getString("img"),
+                                    car.getString("car_make"),
+                                    car.getString("car_model"),
+                                    car.getInt("car_model_year"),
+                                    car.getString("price"),
+                                    car.getString("country"),
+                                    car.getString("city"),
+                                    car.getString("first_name") + " " +
+                                            car.getString("last_name"),
+                                    car.getString("phone"),
+                                    car.getString("url")
+                            )
                     );
-                    carsList.add(myCarModel);
                 }
 
             } catch (JSONException e) {
