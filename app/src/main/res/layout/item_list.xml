@@ -1,62 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_margin="1dp"
+    android:layout_marginBottom="3dp"
     android:background="@color/colorPrimary"
-    android:id="@+id/cv">
+    android:gravity="left">
 
     <ImageView
         android:id="@+id/image_list_car"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_weight="1"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/shape"
         android:contentDescription="car img" />
 
     <TextView
         android:id="@+id/tvlist_car_make"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_weight="1"
+        android:background="@drawable/shape"
         android:gravity="center_vertical|center_horizontal|center"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="car make" />
 
     <TextView
         android:id="@+id/tvlist_car_model"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_weight="2"
+        android:background="@drawable/shape"
         android:gravity="center"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="car model" />
 
     <TextView
         android:id="@+id/tvlist_car_year"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_weight="0.8"
+        android:background="@drawable/shape"
         android:gravity="center"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="year" />
 
     <TextView
         android:id="@+id/tvlist_car_price"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_weight="1"
+        android:background="@drawable/shape"
         android:gravity="center"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="price" />
 
     <TextView
         android:id="@+id/tvlist_car_country"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
         android:layout_weight="1"
+        android:background="@drawable/shape"
         android:gravity="center"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="country" />
 
 

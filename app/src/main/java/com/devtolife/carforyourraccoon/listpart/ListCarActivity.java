@@ -1,4 +1,4 @@
-package com.devtolife.carforyourraccoon;
+package com.devtolife.carforyourraccoon.listpart;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,19 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
+
+import com.devtolife.carforyourraccoon.cardata.CarItemModel;
+import com.devtolife.carforyourraccoon.currentpart.CurrentActivity;
+import com.devtolife.carforyourraccoon.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 
 public class ListCarActivity extends AppCompatActivity {
@@ -71,7 +72,7 @@ public class ListCarActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
 
             try {
-                URL url = new URL("http://www.mocky.io/v2/5a445bb62e000013337660f4");
+                URL url = new URL(getString(R.string.bd_uri_for_30));
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
@@ -137,7 +138,6 @@ public class ListCarActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
             final RecViewAdapter appAdapter = new RecViewAdapter(context, carArray);
             appRecyclerView.setAdapter(appAdapter);
 
@@ -154,24 +154,10 @@ public class ListCarActivity extends AppCompatActivity {
                     intent = new Intent(context, CurrentActivity.class);
                     setMyCarModel(carArray[position]);
 
-
-//                    System.out.println(position +", " + + appRecyclerView.getChildLayoutPosition(itemView) +", " + carArray[position]);
-
-//                    intent.putExtra("POSITION_OF_ITEM", position);
-
-//
-//
-//                    ArrayList<CarItemModel> fileList = new ArrayList<CarItemModel>();
-//                    fileList.add(carArray[position]);
-//
-
                     startActivity(intent);
                 }
             });
-
-
         }
     }
-
 }
 

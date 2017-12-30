@@ -11,14 +11,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1"
-    tools:context="com.devtolife.carforyourraccoon.MainActivity">
+    tools:context="com.devtolife.carforyourraccoon.mainpart.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_rec_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
+
 
         android:scrollbars="vertical">
 

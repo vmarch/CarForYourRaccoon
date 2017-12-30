@@ -1,8 +1,7 @@
-package com.devtolife.carforyourraccoon;
+package com.devtolife.carforyourraccoon.listpart;
 
 import android.content.Context;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import android.widget.TextView;
+
+import com.devtolife.carforyourraccoon.cardata.CarItemModel;
+import com.devtolife.carforyourraccoon.R;
 
 public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.ViewHolder> {
 
@@ -52,7 +54,7 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int i) {
 
-        holder.imgListCar.setImageResource(R.drawable.ic_menu_camera);
+        holder.imgListCar.setImageResource(R.mipmap.ic_launcher);
         holder.tvListCarMake.setText(carArrData[i].getCarMake());
         holder.tvListCarModel.setText(carArrData[i].getCarModel());
         holder.tvListCarYear.setText(carArrData[i].getCarYear());

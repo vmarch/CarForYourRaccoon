@@ -7,21 +7,31 @@
     android:gravity="center_vertical|center_horizontal|center"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.devtolife.carforyourraccoon.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:context="com.devtolife.carforyourraccoon.mainpart.MainActivity"
+    tools:showIn="@layout/app_bar_main"
+    android:background="@color/backgraund">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal|center"
-        android:text="Buy car for your raccoon!" />
+        android:fontFamily="serif"
+        android:text="Buy car for your raccoon!"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btn_go_to_car"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal|center"
+              android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="serif"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Go to Car" />
+        android:padding="10dp"
+        android:textSize="24sp"
+        android:text="Go to Car Market" />
 
 </LinearLayout>

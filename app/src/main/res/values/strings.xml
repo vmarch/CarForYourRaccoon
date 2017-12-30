@@ -6,4 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_current">CurrentActivity</string>
+
+    <string name="bd_uri_for_30">http://www.mocky.io/v2/5a445bb62e000013337660f4</string>
+
 </resources>

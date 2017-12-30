@@ -1,7 +1,6 @@
-package com.devtolife.carforyourraccoon;
+package com.devtolife.carforyourraccoon.currentpart;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +10,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.devtolife.carforyourraccoon.cardata.CarItemModel;
+import com.devtolife.carforyourraccoon.R;
+import com.devtolife.carforyourraccoon.listpart.ListCarActivity;
 
 
 public class CurrentActivity extends AppCompatActivity {
@@ -58,14 +60,14 @@ public class CurrentActivity extends AppCompatActivity {
 
 
         imgCurrentCar.setImageResource(R.mipmap.ic_launcher);
-        tvCarMake.setText(carArrayCurrent.getCarMake());
-        tvCarModel.setText(carArrayCurrent.getCarModel());
-        tvCarYear.setText(carArrayCurrent.getCarYear());
-        tvCarPrice.setText(carArrayCurrent.getCarPrice());
-        tvCarCountry.setText(carArrayCurrent.getCarCountry());
-        tvCarCity.setText(carArrayCurrent.getCarCity());
-        tvCarOwner.setText(carArrayCurrent.getCarOwner());
-        tvOwnerPhone.setText(carArrayCurrent.getOwnerPhone());
+        tvCarMake.setText("Make: "+ carArrayCurrent.getCarMake());
+        tvCarModel.setText("Model: "+carArrayCurrent.getCarModel());
+        tvCarYear.setText("Production: "+carArrayCurrent.getCarYear());
+        tvCarPrice.setText("Price: "+carArrayCurrent.getCarPrice());
+        tvCarCountry.setText("Live in: "+carArrayCurrent.getCarCountry());
+        tvCarCity.setText("Running in: "+ carArrayCurrent.getCarCity());
+        tvCarOwner.setText("Owner: "+carArrayCurrent.getCarOwner());
+        tvOwnerPhone.setText("Tel.: "+carArrayCurrent.getOwnerPhone());
 
     }
 

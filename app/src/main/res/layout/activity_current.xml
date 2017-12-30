@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.devtolife.carforyourraccoon.CurrentActivity">
+    tools:context="com.devtolife.carforyourraccoon.currentpart.CurrentActivity"
+    android:background="@color/backgraund">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -50,7 +51,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|center_horizontal|center"
+                    android:textSize="18sp"
+                    android:gravity="left|center_vertical|center_horizontal|center"
+                    android:paddingLeft="15dp"
                     tools:text="Car make" />
 
                 <TextView
@@ -58,7 +61,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="left|center"
+                    android:textSize="18sp"
+                    android:paddingLeft="15dp"
                     tools:text="Car model" />
 
                 <TextView
@@ -66,7 +71,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="left|center"
+                    android:textSize="18sp"
+                    android:paddingLeft="15dp"
                     tools:text="Year" />
 
                 <TextView
@@ -74,7 +81,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="left|center"
+                    android:textSize="18sp"
+                    android:paddingLeft="15dp"
                     tools:text="Price" />
             </LinearLayout>
 
@@ -88,6 +97,8 @@
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
             tools:text="Country" />
 
         <TextView
@@ -97,6 +108,8 @@
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
             tools:text="City" />
 
 
@@ -107,6 +120,8 @@
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:paddingLeft="10dp"
+            android:textSize="18sp"
             tools:text="Car Owner:" />
 
         <TextView
@@ -116,6 +131,8 @@
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
             tools:text="Phone:" />
 
 

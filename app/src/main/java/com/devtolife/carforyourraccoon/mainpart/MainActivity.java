@@ -1,4 +1,4 @@
-package com.devtolife.carforyourraccoon;
+package com.devtolife.carforyourraccoon.mainpart;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.devtolife.carforyourraccoon.ListCarActivity;
 import com.devtolife.carforyourraccoon.R;
+import com.devtolife.carforyourraccoon.listpart.ListCarActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {

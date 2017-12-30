@@ -1,4 +1,4 @@
-package com.devtolife.carforyourraccoon;
+package com.devtolife.carforyourraccoon.cardata;
 
 public class CarItemModel {
 
