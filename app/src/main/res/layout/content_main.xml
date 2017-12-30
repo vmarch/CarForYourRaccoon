@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal|center"
-        android:text="By car for your raccoon!" />
+        android:text="Buy car for your raccoon!" />
 
     <Button
         android:id="@+id/btn_go_to_car"
@@ -23,6 +23,5 @@
         android:layout_gravity="center_vertical|center_horizontal|center"
         android:gravity="center_vertical|center_horizontal"
         android:text="Go to Car" />
-
 
 </LinearLayout>

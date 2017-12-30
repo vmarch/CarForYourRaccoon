@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".ListCarActivity" />
         <activity
-            android:name=".currentpart.CurrentActivity"
+            android:name=".CurrentActivity"
             android:label="@string/title_activity_current">
 
         </activity>

@@ -2,35 +2,43 @@ package com.devtolife.carforyourraccoon;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
+
 
 public class ListCarActivity extends AppCompatActivity {
 
     Context context;
     private RecyclerView appRecyclerView;
 
-    CarItemModel[] carArray;
-//
-//    HttpURLConnection urlConnection = null;
-//    BufferedReader reader = null;
-//    String resultJson = "";
-//    JSONObject jsonObj;
+    public static CarItemModel getMyCarModel() {
+        return myCarModel;
+    }
 
+    public void setMyCarModel(CarItemModel myCarModel) {
+        this.myCarModel = myCarModel;
+    }
+
+    static CarItemModel myCarModel;
+   public CarItemModel[] carArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,6 @@ public class ListCarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_app);
 
         context = getApplicationContext();
-        new ParseTask().execute();
 
         appRecyclerView = (RecyclerView) findViewById(R.id.my_rec_view);
         appRecyclerView.setHasFixedSize(true);
@@ -48,7 +55,10 @@ public class ListCarActivity extends AppCompatActivity {
         appRecyclerView.setLayoutManager(mLayoutManager);
         appRecyclerView.getRecycledViewPool().clear();
 
+        new ParseTask().execute();
+
     }
+
 
     @SuppressLint("StaticFieldLeak")
     private class ParseTask extends AsyncTask<Void, Void, String> {
@@ -126,9 +136,42 @@ public class ListCarActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            RecViewAdapter appAdapter = new RecViewAdapter(context, carArray);
+
+
+            final RecViewAdapter appAdapter = new RecViewAdapter(context, carArray);
             appRecyclerView.setAdapter(appAdapter);
+
+            appRecyclerView.addOnItemTouchListener(new RecyclerClickListener(context) {
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                }
+
+                @Override
+                public void onItemClick(RecyclerView recyclerView, View itemView,
+                                        int position) {
+
+                    Intent intent;
+                    intent = new Intent(context, CurrentActivity.class);
+                    setMyCarModel(carArray[position]);
+
+
+//                    System.out.println(position +", " + + appRecyclerView.getChildLayoutPosition(itemView) +", " + carArray[position]);
+
+//                    intent.putExtra("POSITION_OF_ITEM", position);
+
+//
+//
+//                    ArrayList<CarItemModel> fileList = new ArrayList<CarItemModel>();
+//                    fileList.add(carArray[position]);
+//
+
+                    startActivity(intent);
+                }
+            });
+
+
         }
     }
+
 }
 
