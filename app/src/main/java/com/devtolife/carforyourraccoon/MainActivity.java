@@ -1,7 +1,8 @@
-package com.devtolife.carforyourraccoon.mainpart;
+package com.devtolife.carforyourraccoon;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.devtolife.carforyourraccoon.listpart.ListCarActivity;
+import com.devtolife.carforyourraccoon.ListCarActivity;
 import com.devtolife.carforyourraccoon.R;
 
 public class MainActivity extends AppCompatActivity
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 

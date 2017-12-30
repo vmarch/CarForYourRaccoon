@@ -1,4 +1,4 @@
-package com.devtolife.carforyourraccoon.listpart;
+package com.devtolife.carforyourraccoon;
 
 import android.content.Context;
 
@@ -10,24 +10,18 @@ import android.widget.ImageView;
 
 import android.widget.TextView;
 
-
-import com.devtolife.carforyourraccoon.R;
-
-import java.util.List;
-
-public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CarViewHolder> {
+public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.ViewHolder> {
 
     private Context context;
+    private CarItemModel[] carArrData;
 
-   static class CarViewHolder extends RecyclerView.ViewHolder {
+   static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgListCar;
         TextView tvListCarMake, tvListCarModel, tvListCarYear, tvListCarPrice, tvListCarCountry;
 
-
-        CarViewHolder(View view) {
+         ViewHolder(View view) {
             super(view);
-
 
             imgListCar = (ImageView) view.findViewById(R.id.image_list_car);
             tvListCarMake = (TextView) view.findViewById(R.id.tvlist_car_make);
@@ -35,38 +29,34 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CarViewH
             tvListCarYear = (TextView) view.findViewById(R.id.tvlist_car_year);
             tvListCarPrice = (TextView) view.findViewById(R.id.tvlist_car_price);
             tvListCarCountry = (TextView) view.findViewById(R.id.tvlist_car_country);
-
         }
     }
 
-    private List<CarItemModel> carsListAdapt;
-    RecViewAdapter(Context cont, List<CarItemModel> carsListAdapt) {
+    RecViewAdapter(Context cont, CarItemModel[] carsListAdapt) {
         context = cont;
-        this.carsListAdapt = carsListAdapt;
+        carArrData = carsListAdapt;
     }
 
     @Override
-    public int getItemCount() {
-//        return carsListAdapt.size();
-        return 16;
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
     }
 
     @Override
-    public CarViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
-        return new CarViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CarViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int i) {
 
         holder.imgListCar.setImageResource(R.drawable.ic_menu_camera);
-        holder.tvListCarMake.setText(carsListAdapt.get(position).carMake);
-        holder.tvListCarModel.setText(carsListAdapt.get(position).carModel);
-        holder.tvListCarYear.setText(carsListAdapt.get(position).carYear);
-        holder.tvListCarPrice.setText(carsListAdapt.get(position).carPrice);
-        holder.tvListCarCountry.setText(carsListAdapt.get(position).carCountry);
-
+        holder.tvListCarMake.setText(carArrData[i].getCarMake());
+        holder.tvListCarModel.setText(carArrData[i].getCarModel());
+        holder.tvListCarYear.setText(carArrData[i].getCarYear());
+        holder.tvListCarPrice.setText(carArrData[i].getCarPrice());
+        holder.tvListCarCountry.setText(carArrData[i].getCarCountry());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +68,8 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.CarViewH
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
+    public int getItemCount() {
+        return carArrData.length;
+
     }
-
-
 }

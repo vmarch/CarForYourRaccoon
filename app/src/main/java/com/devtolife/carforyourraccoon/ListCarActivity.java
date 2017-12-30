@@ -1,14 +1,12 @@
-package com.devtolife.carforyourraccoon.listpart;
+package com.devtolife.carforyourraccoon;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-
-import com.devtolife.carforyourraccoon.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,19 +17,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URLConnection;
 
 public class ListCarActivity extends AppCompatActivity {
 
-    private RecyclerView appRecyclerView;
-    RecViewAdapter appAdapter;
-
     Context context;
+    private RecyclerView appRecyclerView;
 
-    private List<CarItemModel> carsList;
-//    private CarItemModel myCarModel;
-    public static String LOG_TAG = "my_log";
+    CarItemModel[] carArray;
+//
+//    HttpURLConnection urlConnection = null;
+//    BufferedReader reader = null;
+//    String resultJson = "";
+//    JSONObject jsonObj;
 
 
     @Override
@@ -39,23 +37,20 @@ public class ListCarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
 
-
+        context = getApplicationContext();
+        new ParseTask().execute();
 
         appRecyclerView = (RecyclerView) findViewById(R.id.my_rec_view);
         appRecyclerView.setHasFixedSize(true);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
 
-        appRecyclerView.setLayoutManager(layoutManager);
+        appRecyclerView.setLayoutManager(mLayoutManager);
         appRecyclerView.getRecycledViewPool().clear();
-
-        new ParseTask().execute();
-
-        appAdapter = new RecViewAdapter(this, carsList);
-        appRecyclerView.setAdapter(appAdapter);
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class ParseTask extends AsyncTask<Void, Void, String> {
 
         HttpURLConnection urlConnection = null;
@@ -64,7 +59,7 @@ public class ListCarActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... params) {
-            // получаем данные с внешнего ресурса
+
             try {
                 URL url = new URL("http://www.mocky.io/v2/5a445bb62e000013337660f4");
 
@@ -93,44 +88,47 @@ public class ListCarActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String strJson) {
             super.onPostExecute(strJson);
-            // выводим целиком полученную json-строку
-            Log.d(LOG_TAG, strJson);
 
-            JSONObject dataJsonObj;
+            System.out.println(strJson);
+
+            JSONObject jo = null;
 
             try {
-                dataJsonObj = new JSONObject(strJson);
-                JSONArray cars = dataJsonObj.getJSONArray("cars");
-                carsList = new ArrayList<>();
+                jo = new JSONObject(strJson);
+
+                JSONArray cars = jo.getJSONArray("cars");
+
                 JSONObject car;
+
+                carArray = new CarItemModel[cars.length()];
 
                 for (int i = 0; i < cars.length(); i++) {
                     car = cars.getJSONObject(i);
 
+                    CarItemModel carModel = new CarItemModel(
+                            car.getInt("id"),
+                            car.getString("img"),
+                            car.getString("car_make"),
+                            car.getString("car_model"),
+                            car.getString("car_model_year"),
+                            car.getString("price"),
+                            car.getString("country"),
+                            car.getString("city"),
+                            car.getString("first_name") + " " +
+                                    car.getString("last_name"),
+                            car.getString("phone"),
+                            car.getString("url")
 
-                    carsList.add(
-                            new CarItemModel(
-                                    car.getInt("id"),
-                                    car.getString("img"),
-                                    car.getString("car_make"),
-                                    car.getString("car_model"),
-                                    car.getInt("car_model_year"),
-                                    car.getString("price"),
-                                    car.getString("country"),
-                                    car.getString("city"),
-                                    car.getString("first_name") + " " +
-                                            car.getString("last_name"),
-                                    car.getString("phone"),
-                                    car.getString("url")
-                            )
                     );
+                    carArray[i] = carModel;
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            RecViewAdapter appAdapter = new RecViewAdapter(context, carArray);
+            appRecyclerView.setAdapter(appAdapter);
         }
     }
-
-
 }
+
