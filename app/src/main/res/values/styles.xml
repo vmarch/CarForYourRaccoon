@@ -14,6 +14,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--<style name="ItemStyle">-->
+        <!--<item name="layout_width">0dp</item>-->
+        <!--<item name="layout_height">match_parent</item>-->
+        <!--<item name="layout_marginLeft">1dp</item>-->
+        <!--<item name="layout_marginRight">1dp</item>-->
+        <!--<item name="background">@drawable/shape</item>-->
+        <!--<item name="gravity">center</item>-->
+        <!--<item name="textSize">14sp</item>-->
+    <!--</style>-->
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
